@@ -7,7 +7,52 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  userList: any[] = [];
+  userList: any[] = [
+    {
+      firstName:"dileep",
+    lastName: "kumar",
+    mail: "dileep@gmail.com",
+    mob: "9441494230",
+    company: "Buzz Board",
+    gender: "Male",
+    dob: "11-02-1997",
+    pswd: "2882",
+    cpswd: "99228",
+    },
+    {
+      firstName:"Akhil",
+    lastName: "kumar",
+    mail: "akil@gmail.com",
+    mob: "9377272712",
+    company: "Cognizant",
+    gender: "Male",
+    dob: "09-11-1994",
+    pswd: "2882",
+    cpswd: "99228",
+    },
+    {
+      firstName:"Rahul",
+    lastName: "Dev",
+    mail: "rahul@gmail.com",
+    mob: "9382773271",
+    company: "Infosys",
+    gender: "Male",
+    dob: "02-06-1992",
+    pswd: "2882",
+    cpswd: "99228",
+    },
+    {
+      firstName:"shivam",
+    lastName: "Dube",
+    mail: "shivam@gmail.com",
+    mob: "9277273283",
+    company: "TCS",
+    gender: "Male",
+    dob: "02-06-1989",
+    pswd: "2882",
+    cpswd: "99228",
+    },
+  ];
   selectedIndex: any;
   localData: any;
   userForm = new FormGroup({
@@ -21,14 +66,14 @@ export class AppComponent implements OnInit {
     pswd: new FormControl(''),
     cpswd: new FormControl(''),
   });
-  userDetails: any;
+  currentUser: any;
   showRegister: boolean = false;
   showUpdateUser: boolean = false;
   ngOnInit() {
-    //   console.log(JSON.stringify(localStorage.getItem('form-data')));
-    //   this.localData=localStorage.getItem('form-data');
-    //   console.log(this.localData);
-    //  this.userList=this.localData;
+      // console.log(JSON.parse(localStorage.getItem('form-data')));
+      const userJson = localStorage.getItem('form-data');
+this.currentUser = userJson !== null ? JSON.parse(userJson):{};
+    this.userList.push(this.currentUser)
     this.showRegister = true;
   }
   addUser() {
@@ -56,6 +101,7 @@ export class AppComponent implements OnInit {
 
   updateUser() {
     this.userList[this.selectedIndex] = this.userForm.value;
+    this.userForm.reset();
     console.log(this.userList);
   }
 
