@@ -9,33 +9,60 @@
 <form [formGroup]="userForm">
   <label for="first-name">Reactive Form Example</label><br /><br />
   <button (click)="addUser()">Add User</button><br /><br/>
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName" /><br /><br />
-
+  <label for="first-name">First Name: </label> 
+  <input id="first-name" type="text" formControlName="firstName" /><br />
+  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+    <div>Firstname is required</div>
+</div><br />
   <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName" /><br /><br />
+  <input id="last-name" type="text" formControlName="lastName" /><br />
+  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+    <div>LastName is required</div>
+</div><br />
   <label for="email">Email </label>
-  <input id="email" type="email" formControlName="mail" /><br /><br />
+  <input id="email" type="email" formControlName="mail" /><br />
+  <div *ngIf="submitted && f.mail.errors" class="invalid-feedback">
+    <div *ngIf="f.mail.errors">Email is required</div>
+</div><br />
   <label for="Phone">Phone </label>
-  <input id="Phone" type="number" formControlName="mob" /><br /><br />
+  <input id="Phone" type="number" formControlName="mob" /><br />
+  <div *ngIf="submitted && f.mob.errors" class="invalid-feedback">
+    <div>Mobile is required</div>
+</div><br />
   <label for="Company">Company </label>
-  <input id="Company" type="text" formControlName="company" /><br /><br />
+  <input id="Company" type="text" formControlName="company" /><br />
+  <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+    <div>Company is required</div>
+</div><br />
   <label for="gender">Gender </label><br />
   &nbsp;&nbsp;<input type="radio" id="Male" value="Male" formControlName="gender" />  
   <label for="male">Male</label><br />
     <input type="radio" id="Female" value="female" formControlName="gender" />  
-  <label for="Female">Female</label><br /><br />
+  <label for="Female">Female</label><br />
+  <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+    <div>Gender is required</div>
+</div><br />
   <label for="date-birth">Date of Birth </label>
-  <input id="date-birth" type="date" formControlName="dob" /><br /><br />
+  <input id="date-birth" type="date" formControlName="dob" /><br />
+  <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+    <div>Date of Birth is required</div>
+</div>
+<br />
   <label for="password">Password </label>
-  <input id="password" type="password" formControlName="pswd" /><br /><br />
+  <input id="password" type="password" formControlName="pswd" /><br />
+  <div *ngIf="submitted && f.pswd.errors" class="invalid-feedback">
+    <div>Password is required</div>
+</div><br />
   <label for="confirm-password">Confirm Password </label>
   <input
     id="confirm-password"
     type="password"
     formControlName="cpswd"
-  /><br /><br />
-  <button (click)="saveUser()" *ngIf="showRegister">Register</button> <button (click)="updateUser()" *ngIf="showUpdateUser">Update</button><button (click)="clear()">Cancel</button>
+  /><br />
+  <div *ngIf="submitted && f.cpswd.errors" class="invalid-feedback">
+    <div>Confirm password is required</div>
+</div><br />
+  <button (click)="saveUser()" *ngIf="showRegister">Register</button> <button (click)="updateUser()" *ngIf="showUpdateUser" [disabled]="userForm.invalid">Update</button><button (click)="clear()">Cancel</button>
 </form>
 <table>
   <tr style="background-color: brown; color: white; padding: 10px">
