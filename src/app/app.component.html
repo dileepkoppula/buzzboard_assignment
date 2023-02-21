@@ -35,7 +35,7 @@
     type="password"
     formControlName="cpswd"
   /><br /><br />
-  <button (click)="saveUser()">Register</button> <button (click)="updateUser()">Update</button><button (click)="clear()">Cancel</button>
+  <button (click)="saveUser()" *ngIf="showRegister">Register</button> <button (click)="updateUser()" *ngIf="showUpdateUser">Update</button><button (click)="clear()">Cancel</button>
 </form>
 <table>
   <tr style="background-color: brown; color: white; padding: 10px">
