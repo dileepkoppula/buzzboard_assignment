@@ -23,10 +23,10 @@ export class AppComponent implements OnInit{
   });
   userDetails: any;
   ngOnInit() {
-    console.log(JSON.stringify(localStorage.getItem('form-data')));
-    this.localData=localStorage.getItem('form-data');
-    console.log(this.localData);
-   this.userList=this.localData;
+  //   console.log(JSON.stringify(localStorage.getItem('form-data')));
+  //   this.localData=localStorage.getItem('form-data');
+  //   console.log(this.localData);
+  //  this.userList=this.localData;
   }
   addUser() {
     this.userForm.reset();
